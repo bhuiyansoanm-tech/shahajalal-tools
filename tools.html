@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHAHAJALAL Tools - All in One</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif;-webkit-tap-highlight-color:transparent}
+body{background:#0a0a12;color:white;overflow-x:hidden}
+.bg{position:fixed;inset:0;z-index:-1;background:linear-gradient(45deg,#7c3aed,#db2777,#22c55e,#facc15,#2563eb);background-size:400% 400%;animation:bgMove 8s ease infinite}
+@keyframes bgMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.container{max-width:480px;margin:0 auto;padding:20px 16px 40px;text-align:center;position:relative;z-index:2}
+.logo{width:90px;height:90px;border-radius:50%;border:4px solid white;object-fit:cover;margin-top:10px;box-shadow:0 0 25px #ec4899}
+h1{font-size:32px;margin-top:12px;background:linear-gradient(90deg,#fff,#f9a8d4,#a78bfa,#fff);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shine 3s linear infinite}
+@keyframes shine{to{background-position:200% center}}
+.sub{background:#a855f7;display:inline-block;padding:6px 16px;border-radius:20px;font-size:13px;margin-top:8px}
+.search{width:100%;padding:14px 16px;border-radius:30px;border:none;outline:none;margin:18px 0 8px;font-size:15px;background:rgba(255,255,255,0.95);color:#000}
+.search::placeholder{color:#888}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+
+/* ===== TOUCH EFFECT START ===== */
+.tool-btn{
+  background:rgba(255,255,255,0.15);
+  border:1px solid rgba(255,255,255,0.3);
+  backdrop-filter:blur(10px);
+  border-radius:18px;
+  padding:18px 10px;
+  cursor:pointer;
+  color:white;
+  transition:transform 0.15s ease, box-shadow 0.15s ease, background 0.2s;
+  position:relative;
+  overflow:hidden;
+  touch-action:manipulation;
+  user-select:none;
+}
+.tool-btn:active{
+  transform:scale(0.90) translateY(2px);
+  background:rgba(236,72,153,0.4);
+  box-shadow:0 0 20px #ec4899, 0 0 40px #a855f7;
+}
+.tool-btn .emoji{font-size:32px;display:block;margin-bottom:6px;transition:transform 0.15s}
+.tool-btn:active .emoji{transform:scale(1.4) rotate(10deg)}
+.tool-btn b{font-size:14px;display:block}
+.tool-btn span{font-size:11px;opacity:0.8}
+
+/* Ripple */
+.ripple{
+  position:absolute;
+  border-radius:50%;
+  background:rgba(255,255,255,0.6);
+  transform:scale(0);
+  animation:rippleAnim 0.6s linear;
+  pointer-events:none;
+}
+@keyframes rippleAnim{to{transform:scale(4);opacity:0}}
+
+/* Main Button Touch */
+.btn{
+  width:100%;padding:13px;border:none;border-radius:12px;
+  background:linear-gradient(45deg,#ec4899,#a855f7);color:white;font-weight:800;font-size:15px;cursor:pointer;margin-top:8px;
+  transition:transform 0.12s, box-shadow 0.12s;
+  touch-action:manipulation;position:relative;overflow:hidden;
+}
+.btn:active{transform:scale(0.95);box-shadow:0 0 18px #ec4899}
+.btn2{background:linear-gradient(45deg,#22c55e,#2563eb)}
+.btn2:active{box-shadow:0 0 18px #22c55e}
+.back{position:fixed;top:15px;left:15px;z-index:100;background:white;color:black;border:none;padding:9px 14px;border-radius:30px;font-weight:800;cursor:pointer;transition:transform 0.12s;touch-action:manipulation}
+.back:active{transform:scale(0.90)}
+.close-btn{background:#ff3b30;color:white;border:none;padding:8px 14px;border-radius:20px;cursor:pointer;float:right;margin-bottom:8px;transition:transform 0.12s}
+.close-btn:active{transform:scale(0.90) rotate(-5deg)}
+/* ===== TOUCH EFFECT END ===== */
+
+.tool-box{display:none;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);backdrop-filter:blur(12px);border-radius:20px;padding:18px;margin-top:16px;text-align:left;animation:pop .4s ease both}
+@keyframes pop{from{opacity:0;transform:scale(.9) translateY(15px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.tool-box.show{display:block}
+.tool-box h3{font-size:19px;margin-bottom:12px;text-align:center;color:#f9a8d4}
+.tool-box label{font-size:13px;opacity:.9;display:block;margin:10px 0 5px}
+.tool-box input,.tool-box select,.tool-box textarea{width:100%;padding:12px;border-radius:12px;border:none;outline:none;font-size:15px;background:white;color:#000;margin-bottom:6px}
+.tool-box textarea{height:90px;resize:none}
+.result{background:rgba(0,0,0,0.35);padding:14px;border-radius:12px;margin-top:12px;text-align:center;font-size:16px;line-height:1.7;min-height:50px;word-break:break-all}
+.qr-img{width:180px;height:180px;background:white;padding:8px;border-radius:12px;margin:10px auto;display:block}
+.footer{margin-top:25px;font-size:12px;opacity:.6;text-align:center}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<button class="back" onclick="location.href='index.html'">← Home</button>
+<div class="container">
+<img class="logo" src="https://i.ibb.co.com/3m9z63jz/inbound1381375373421866196.jpg">
+<h1>SHAHAJALAL TOOLS</h1>
+<div class="sub">✨ All in One - ১২টা টুল এক জায়গায় ✨</div>
+<input class="search" id="search" placeholder="🔍 কি খুঁজছো? যেমন: বয়স, GPA, QR..." oninput="filterTools()">
+<div class="grid" id="grid">
+<div class="tool-btn" data-name="বয়স age" onclick="openTool('age')"><span class="emoji">🎂</span><b>বয়স ক্যালকুলেটর</b><span>Age Calculator</span></div>
+<div class="tool-btn" data-name="gpa জিপিএ রেজাল্ট" onclick="openTool('gpa')"><span class="emoji">🎓</span><b>GPA ক্যালকুলেটর</b><span>HSC / SSC</span></div>
+<div class="tool-btn" data-name="ভালোবাসা love প্রেম" onclick="openTool('love')"><span class="emoji">❤️</span><b>Love ক্যালকুলেটর</b><span>প্রেমের %</span></div>
+<div class="tool-btn" data-name="qr কোড" onclick="openTool('qr')"><span class="emoji">📷</span><b>QR বানাও</b><span>QR Generator</span></div>
+<div class="tool-btn" data-name="পাসওয়ার্ড password" onclick="openTool('pass')"><span class="emoji">🔐</span><b>পাসওয়ার্ড বানাও</b><span>Strong Password</span></div>
+<div class="tool-btn" data-name="bmi ওজন স্বাস্থ্য" onclick="openTool('bmi')"><span class="emoji">⚖️</span><b>BMI ক্যালকুলেটর</b><span>ওজন ঠিক আছে?</span></div>
+<div class="tool-btn" data-name="শব্দ গোনা word" onclick="openTool('word')"><span class="emoji">📝</span><b>শব্দ গোনা</b><span>Word Counter</span></div>
+<div class="tool-btn" data-name="টাকা dollar টাকা" onclick="openTool('money')"><span class="emoji">💵</span><b>টাকা কনভার্টার</b><span>Dollar to Taka</span></div>
+<div class="tool-btn" data-name="জন্মদিন birthday countdown" onclick="openTool('birthday')"><span class="emoji">🎯</span><b>জন্মদিন কাউন্টডাউন</b><span>আর কয়দিন বাকি?</span></div>
+<div class="tool-btn" data-name="লাকি lucky number লটারি" onclick="openTool('lucky')"><span class="emoji">🎲</span><b>লাকি নাম্বার</b><span>Lucky Number</span></div>
+<div class="tool-btn" data-name="লেখা বড় ছোট text" onclick="openTool('text')"><span class="emoji">🔡</span><b>লেখা বড়-ছোট</b><span>Text Converter</span></div>
+<div class="tool-btn" data-name="স্টপওয়াচ stopwatch timer" onclick="openTool('stop')"><span class="emoji">⏱️</span><b>স্টপওয়াচ</b><span>Stopwatch</span></div>
+</div>
+
+<div class="tool-box" id="tool-age"><button class="close-btn" onclick="closeTool()">✕ বন্ধ</button><h3>🎂 বয়স ক্যালকুলেটর</h3><label>তোমার জন্ম তারিখ:</label><input type="date" id="dob"><button class="btn" onclick="calcAge()">বয়স দেখো</button><div class="result" id="ageRes">এখানে রেজাল্ট আসবে</div></div>
+<div class="tool-box" id="tool-gpa"><button class="close-btn" onclick="closeTool()">✕ বন্ধ</button><h3>🎓 GPA ক্যালকুলেটর</h3><label>বাংলা GPA:</label><input type="number" id="g1" placeholder="যেমন: 5.00" step="0.01" max="5"><label>English GPA:</label><input type="number" id="g2" placeholder="যেমন: 4.50" step="0.01" max="5"><label>ICT GPA:</label><input type="number" id="g3" placeholder="যেমন: 5.00" step="0.01" max="5"><label>আরো বিষয় থাকলে যোগ করো:</label><input type="number" id="g4" placeholder="ঐচ্ছিক" step="0.01" max="5"><button class="btn" onclick="calcGPA()">GPA হিসাব করো</button><div class="result" id="gpaRes">এখানে রেজাল্ট আসবে</div></div>
+<div class="tool-box" id="tool-love"><button class="close-btn" onclick="closeTool()">✕ বন্ধ</button><h3>❤️ Love ক্যালকুলেটর</h3><label>তোমার নাম:</label><input id="love1" placeholder="যেমন: Shahajalal"><label>তার নাম:</label><input id="love2" placeholder="যেমন: Priya"><button class="btn" onclick="calcLove()">ভালোবাসা দেখো</button><div class="result" id="loveRes">এখানে রেজাল্ট আসবে</div></div>
+<div class="tool-box" id="tool-qr"><button class="close-btn" onclick="closeTool()">✕ বন্ধ</button><h3>📷 QR কোড বানাও</h3><label>লিংক / লেখা দাও:</label><input id="qrText" placeholder="https://..."><button class="btn" onclick="makeQR()">QR বানাও</button><img id="qrImg" class="qr-img" style="display:none"><div class="result" id="qrRes">QR বানিয়ে বন্ধুদের পাঠাও!</div></div>
+<div class="tool-box" id="tool-pass"><button class="close-btn" onclick="closeTool()">✕ বন্ধ</button><h3>🔐 Strong পাসওয়ার্ড</h3><label>কত অক্ষরের হবে?</label><select id="passLen"><option value="8">8 অক্ষর</option><option value="12" selected>12 অক্ষর</option><option value="16">16 অক্ষর</option></select><button class="btn" onclick="makePass()">পাসওয়ার্ড বানাও</button><div class="result" id="passRes">এখানে পাসওয়ার্ড আসবে</div><button class="btn btn2" onclick="copyPass()">📋 কপি করো</button></div>
+<div class="tool-box" id="tool-bmi"><button class="close-btn" onclick="closeTool()">✕ বন্ধ</button><h3>⚖️ BMI ক্যালকুলেটর</h3><label>উচ্চতা (ফুট):</label><input type="number" id="bmiH" placeholder="যেমন: 5.6"><label>ওজন (কেজি):</label><input type="number" id="bmiW" placeholder="যেমন: 60"><button class="btn" onclick="calcBMI()">BMI দেখো</button><div class="result" id="bmiRes">এখানে রেজাল্ট আসবে</div></div>
+<div class="tool-box" id="tool-word"><button class="close-btn" onclick="closeTool()">✕ বন্ধ</button><h3>📝 শব্দ গোনা</h3><label>তোমার লেখা এখানে লিখো:</label><textarea id="wordText" placeholder="এখানে লিখো..." oninput="countWord()"></textarea><div class="result" id="wordRes">শব্দ: 0 | অক্ষর: 0</div></div>
+<div class="tool-box" id="tool-money"><button class="close-btn" onclick="closeTool()">✕ বন্ধ</button><h3>💵 ডলার থেকে টাকা</h3><label>ডলার ($):</label><input type="number" id="usd" placeholder="যেমন: 100" oninput="calcMoney()"><div class="result" id="moneyRes">১ ডলার = ১১০ টাকা ধরে হিসাব হবে</div></div>
+<div class="tool-box" id="tool-birthday"><button class="close-btn" onclick="closeTool()">✕ বন্ধ</button><h3>🎯 জন্মদিন কাউন্টডাউন</h3><label>তোমার জন্মদিনের তারিখ:</label><input type="date" id="bday"><button class="btn" onclick="calcBirthday()">কয়দিন বাকি দেখো</button><div class="result" id="bdayRes">এখানে রেজাল্ট আসবে</div></div>
+<div class="tool-box" id="tool-lucky"><button class="close-btn" onclick="closeTool()">✕ বন্ধ</button><h3>🎲 লাকি নাম্বার</h3><label>তোমার নাম দাও:</label><input id="luckyName" placeholder="যেমন: Shahajalal"><button class="btn" onclick="calcLucky()">আমার লাকি নাম্বার দেখো</button><div class="result" id="luckyRes">এখানে রেজাল্ট আসবে</div></div>
+<div class="tool-box" id="tool-text"><button class="close-btn" onclick="closeTool()">✕ বন্ধ</button><h3>🔡 লেখা বড়-ছোট করো</h3><label>লেখা দাও:</label><textarea id="textInput" placeholder="এখানে লিখো..."></textarea><button class="btn" onclick="toUpper()">ABC - বড় করো</button><button class="btn btn2" onclick="toLower()">abc - ছোট করো</button><div class="result" id="textRes">এখানে রেজাল্ট আসবে</div></div>
+<div class="tool-box" id="tool-stop"><button class="close-btn" onclick="closeTool()">✕ বন্ধ</button><h3>⏱️ স্টপওয়াচ</h3><div class="result" id="stopRes" style="font-size:28px;font-weight:800">00:00:00</div><button class="btn" onclick="startStop()">▶️ চালু</button><button class="btn btn2" onclick="stopStop()">⏸️ থামাও</button><button class="btn" style="background:#ff3b30" onclick="resetStop()">🔄 রিসেট</button></div>
+
+<div class="footer">Made with ❤️ by SHAHAJALAL | Share করো বন্ধুদের সাথে!</div>
+</div>
+<script>
+// TOUCH RIPPLE + VIBRATION
+document.querySelectorAll('.tool-btn, .btn, .back, .close-btn').forEach(btn=>{
+  btn.addEventListener('touchstart', function(e){
+    if(navigator.vibrate) navigator.vibrate(10);
+    let rect=this.getBoundingClientRect();
+    let ripple=document.createElement('span');
+    ripple.classList.add('ripple');
+    let size=Math.max(rect.width, rect.height);
+    ripple.style.width=ripple.style.height=size+'px';
+    ripple.style.left=(e.touches[0].clientX-rect.left-size/2)+'px';
+    ripple.style.top=(e.touches[0].clientY-rect.top-size/2)+'px';
+    this.appendChild(ripple);
+    setTimeout(()=>ripple.remove(),600);
+  }, {passive:true});
+  btn.addEventListener('click', function(){ if(navigator.vibrate) navigator.vibrate(8); });
+});
+
+function openTool(id){document.querySelectorAll('.tool-box').forEach(e=>e.classList.remove('show'));document.getElementById('tool-'+id).classList.add('show');document.getElementById('tool-'+id).scrollIntoView({behavior:'smooth'});}
+function closeTool(){document.querySelectorAll('.tool-box').forEach(e=>e.classList.remove('show'));}
+function filterTools(){let q=document.getElementById('search').value.toLowerCase();document.querySelectorAll('.tool-btn').forEach(b=>{b.style.display=b.getAttribute('data-name').toLowerCase().includes(q)?'block':'none';});}
+function calcAge(){let d=document.getElementById('dob').value;if(!d){document.getElementById('ageRes').innerHTML='❌ আগে জন্ম তারিখ দাও!';return;}let birth=new Date(d),now=new Date();let age=now.getFullYear()-birth.getFullYear();let m=now.getMonth()-birth.getMonth();if(m<0||(m===0&&now.getDate()<birth.getDate()))age--;let days=Math.floor((now-birth)/(1000*60*60*24));document.getElementById('ageRes').innerHTML='🎉 তোমার বয়স <b>'+age+' বছর</b><br>মোট দিন: '+days+' দিন<br>তুমি অনেক বড় হয়ে গেছো! 😍';}
+function calcGPA(){let vals=[document.getElementById('g1').value,document.getElementById('g2').value,document.getElementById('g3').value,document.getElementById('g4').value].filter(v=>v!=='').map(Number);if(vals.length<2){document.getElementById('gpaRes').innerHTML='❌ কমপক্ষে ২টা বিষয়ের GPA দাও!';return;}let avg=(vals.reduce((a,b)=>a+b,0)/vals.length).toFixed(2);let grade=avg>=5?'A+ 🌟':avg>=4?'A 😍':avg>=3.5?'A- 🙂':avg>=3?'B 👍':'চেষ্টা করো 💪';document.getElementById('gpaRes').innerHTML='তোমার GPA: <b>'+avg+'</b><br>গ্রেড: '+grade;}
+function calcLove(){let a=document.getElementById('love1').value.trim(),b=document.getElementById('love2').value.trim();if(!a||!b){document.getElementById('loveRes').innerHTML='❌ ২টা নামই দাও!';return;}let sum=0;let s=(a+b).toLowerCase();for(let i=0;i<s.length;i++)sum+=s.charCodeAt(i);let p=50+(sum%50);let msg=p>90?'💍 বিয়ে পাকা!':p>75?'❤️ সত্যিকারের ভালোবাসা!':p>60?'😍 অনেক মিল আছে!':'🙂 বন্ধু হিসেবে ভালো!';document.getElementById('loveRes').innerHTML=a+' ❤️ '+b+'<br><b>'+p+'% মিল!</b><br>'+msg;}
+function makeQR(){let t=document.getElementById('qrText').value.trim();if(!t){document.getElementById('qrRes').innerHTML='❌ আগে লেখা / লিংক দাও!';return;}let img=document.getElementById('qrImg');img.src='https://api.qrserver.com/v1/create-qr-code/?size=180x180&data='+encodeURIComponent(t);img.style.display='block';document.getElementById('qrRes').innerHTML='✅ QR হয়ে গেছে! স্ক্রিনশট নিয়ে নাও!';}
+let lastPass='';
+function makePass(){let len=Number(document.getElementById('passLen').value);let chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%';let p='';for(let i=0;i<len;i++)p+=chars[Math.floor(Math.random()*chars.length)];lastPass=p;document.getElementById('passRes').innerHTML='<b style="font-size:18px">'+p+'</b>';}
+function copyPass(){if(!lastPass){alert('আগে পাসওয়ার্ড বানাও!');return;}navigator.clipboard.writeText(lastPass);alert('কপি হয়ে গেছে! ✅');}
+function calcBMI(){let h=Number(document.getElementById('bmiH').value),w=Number(document.getElementById('bmiW').value);if(!h||!w){document.getElementById('bmiRes').innerHTML='❌ উচ্চতা আর ওজন দাও!';return;}let meter=h*0.3048;let bmi=(w/(meter*meter)).toFixed(1);let s=bmi<18.5?'একটু চিকন, বেশি করে খাও 🍗':bmi<25?'✅ একদম পারফেক্ট!':bmi<30?'একটু বেশি, হাঁটাহাঁটি করো 🚶':'ডাক্তার দেখাও 🩺';document.getElementById('bmiRes').innerHTML='তোমার BMI: <b>'+bmi+'</b><br>'+s;}
+function countWord(){let t=document.getElementById('wordText').value.trim();let words=t? t.split(/\s+/).length:0;document.getElementById('wordRes').innerHTML='শব্দ: <b>'+words+'</b> | অক্ষর: <b>'+document.getElementById('wordText').value.length+'</b>';}
+function calcMoney(){let usd=Number(document.getElementById('usd').value)||0;document.getElementById('moneyRes').innerHTML='$'+usd+' ডলার = <b>'+(usd*110)+' টাকা</b> 🇧🇩';}
+function calcBirthday(){let d=document.getElementById('bday').value;if(!d){document.getElementById('bdayRes').innerHTML='❌ আগে জন্মদিনের তারিখ দাও!';return;}let b=new Date(d);let now=new Date();let next=new Date(now.getFullYear(),b.getMonth(),b.getDate());if(next<now) next.setFullYear(now.getFullYear()+1);let diff=Math.ceil((next-now)/(1000*60*60*24));if(diff===0) document.getElementById('bdayRes').innerHTML='🎉🎂 আজকেই তোমার জন্মদিন! শুভ জন্মদিন!';else document.getElementById('bdayRes').innerHTML='🎂 তোমার জন্মদিনের আর <b>'+diff+' দিন</b> বাকি!<br>তারিখ: '+next.toLocaleDateString('bn-BD');}
+function calcLucky(){let n=document.getElementById('luckyName').value.trim();if(!n){document.getElementById('luckyRes').innerHTML='❌ আগে নাম দাও!';return;}let num=Math.floor(Math.random()*99)+1;let colors=['লাল ❤️','নীল 💙','সবুজ 💚','হলুদ 💛','গোলাপি 💖'];let c=colors[Math.floor(Math.random()*colors.length)];document.getElementById('luckyRes').innerHTML=n+' এর লাকি নাম্বার: <b style="font-size:26px">'+num+'</b><br>লাকি কালার: '+c+'<br>আজকের দিনটা তোমার! 🍀';}
+function toUpper(){let t=document.getElementById('textInput').value;document.getElementById('textRes').innerHTML='<b>'+t.toUpperCase()+'</b>';}
+function toLower(){let t=document.getElementById('textInput').value;document.getElementById('textRes').innerHTML='<b>'+t.toLowerCase()+'</b>';}
+let stopSec=0,stopTimer=null;
+function updateStop(){let h=String(Math.floor(stopSec/3600)).padStart(2,'0');let m=String(Math.floor((stopSec%3600)/60)).padStart(2,'0');let s=String(stopSec%60).padStart(2,'0');document.getElementById('stopRes').innerHTML=h+':'+m+':'+s;}
+function startStop(){if(stopTimer) return;stopTimer=setInterval(()=>{stopSec++;updateStop();},1000);}
+function stopStop(){clearInterval(stopTimer);stopTimer=null;}
+function resetStop(){stopStop();stopSec=0;updateStop();}
+</script>
+</body>
+</html>
